@@ -17,7 +17,8 @@ class GenericService {
   }
 
   async queryItems(filter, options) {
-    const { page = 1, limit = 10 } = options;
+    const page = Number(options.page) || 1;
+    const limit = Number(options.limit) || 10;
 
     // Define the aggregation pipeline
     const pipeline = [
@@ -68,13 +69,13 @@ class GenericService {
     const results = await this.model.aggregate(pipeline).exec();
 
     // Count total items
-    const totalItems = await this.model.countDocuments(filter).exec();
+    const totalResults = await this.model.countDocuments(filter).exec();
 
     // Return paginated result
     return {
       results,
-      totalItems,
-      totalPages: Math.ceil(totalItems / limit),
+      totalResults,
+      totalPages: Math.ceil(totalResults / limit),
       limit,
       page,
     };
