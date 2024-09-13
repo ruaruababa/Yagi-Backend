@@ -1,0 +1,9 @@
+module.exports.Token = require('./token.model');
+module.exports.User = require('./user.model');
+module.exports.CanSupport = require('./can-support.model');
+module.exports.ConnectGov = require('./connect-gov.model');
+module.exports.NeedSupport = require('./need-support.model');
+module.exports.SupportStay = require('./support-stay.model');
+module.exports.Province = require('./province.model');
+module.exports.District = require('./district.model');
+module.exports.Ward = require('./ward.model');
